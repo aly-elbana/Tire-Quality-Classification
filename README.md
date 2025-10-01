@@ -1,20 +1,20 @@
-# 🚗 Tire Quality Classification System
+# Tire Quality Classification System
 
 AI-powered tire quality classification using deep learning
 
-## 📋 Overview
+## Overview
 
 This project aims to classify tire quality (good/bad) using deep learning techniques. The model uses ResNet50 as a feature extractor with a custom classifier to achieve high accuracy in classification.
 
-## ✨ Features
+## Features
 
-- 🎯 **High Accuracy**: Model achieves 95.16% accuracy in tire classification
-- 🚀 **Optimized Performance**: Uses ResNet50 with performance optimizations
-- 🔧 **Easy Interface**: Gradio application for model interaction
-- 📊 **Advanced Training**: Supports Early Stopping and AMP
-- 🎨 **Image Processing**: Automatic image enhancement support
+- **High Accuracy**: Model achieves 95.16% accuracy in tire classification
+- **Optimized Performance**: Uses ResNet50 with performance optimizations
+- **Easy Interface**: Gradio application for model interaction
+- **Advanced Training**: Supports Early Stopping and AMP
+- **Image Processing**: Automatic image enhancement support
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 ├── app.py                 # Main Gradio application
@@ -28,7 +28,7 @@ This project aims to classify tire quality (good/bad) using deep learning techni
 └── requirements.txt      # Project requirements
 ```
 
-## 🚀 Installation and Setup
+## Installation and Setup
 
 ### 1. Clone the repository
 
@@ -58,7 +58,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -86,7 +86,7 @@ pip install -r requirements.txt
 - Change port in `app.py`: `demo.launch(server_port=7861)`
 - Or kill existing process: `lsof -ti:7860 | xargs kill -9`
 
-## 🧠 Trained Models
+## Trained Models
 
 ### Main Model (ResNet50 + FC Classifier)
 
@@ -101,14 +101,14 @@ pip install -r requirements.txt
 - **Features**: Adaptive Pooling, Batch Normalization
 - **Performance**: Optimized for different image sizes
 
-## 📊 Performance Results
+## Performance Results
 
 | Model          | Accuracy | Loss | Epochs |
 | -------------- | -------- | ---- | ------ | --------- |
 | ResNet50 + FC  | 95.16%   | 0.12 | 15     |
 | ResNet50 + CNN | 64.82%   | 0.15 | 12     | Bad Model |
 
-## 🔧 Usage
+## Usage
 
 ### Training
 
@@ -134,7 +134,7 @@ python model.testing.py
 python app.py
 ```
 
-## 📁 Data Structure
+## Data Structure
 
 ```
 images/
@@ -148,7 +148,7 @@ images/
     └── ...
 ```
 
-## ⚙️ Advanced Settings
+## Advanced Settings
 
 ### Training Parameters
 
@@ -165,7 +165,7 @@ images/
 - **Early Stopping**: Enabled (patience=5)
 - **GPU Support**: CUDA/MPS
 
-## 🎯 API Usage
+## API Usage
 
 ```python
 from model import model
