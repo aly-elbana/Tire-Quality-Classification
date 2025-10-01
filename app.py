@@ -68,23 +68,23 @@ def predict_tire_quality(image_pixels):
 demo = gr.Interface(
     fn=predict_tire_quality,
     inputs=gr.Image(
-        label="📸 Upload Tire Image",
+        label="Upload Tire Image",
         type="numpy"
     ),
     outputs=gr.Textbox(
-        label="🎯 Classification Result",
+        label="Classification Result",
         lines=2
     ),
-    title="🚗 Tire Quality Classification System",
+    title="Tire Quality Classification System",
     description="""
     **Welcome to the Tire Quality Classification System!**
     
-    📋 **How to use:**
+    **How to use:**
     1. Upload a clear tire image
     2. Wait for the result
     3. Get quality assessment with percentage
     
-    ⚠️ **Note:** For best results, ensure the image is clear and well-lit
+    **Note:** For best results, ensure the image is clear and well-lit
     """,
     examples=[
         ["tire_images_test/tire0.jpg"],
@@ -100,8 +100,6 @@ demo = gr.Interface(
 if __name__ == "__main__":
     print("Starting Tire Classification App...")
     demo.launch(
-        server_name="0.0.0.0", 
-        server_port=7860,
         share=False,
         show_error=True
     )
