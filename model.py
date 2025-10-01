@@ -99,15 +99,28 @@ def load_pretrained_model():
         # Create classifier
         classifier = FC_Classifier().to(device)
         
-        # Load trained weights
-        model_path = "./best_models/best_model_acc0.9516_cpu.pth"
-        if os.path.exists(model_path):
-            state_dict = torch.load(model_path, map_location=device)
-            classifier.load_state_dict(state_dict)
-            print(f"✅ Loaded pretrained model from {model_path}")
-        else:
-            print(f"⚠️ Model file not found: {model_path}")
-            print("Using untrained model")
+        # Load trained weights - try multiple model files
+        model_paths = [
+            "./best_models/best_model_acc0.9516_cpu.pth",
+            "./best_models/best_model_20250827_123421_acc0.9516.pth"
+        ]
+        
+        model_loaded = False
+        for model_path in model_paths:
+            if os.path.exists(model_path):
+                try:
+                    state_dict = torch.load(model_path, map_location=device)
+                    classifier.load_state_dict(state_dict)
+                    print(f"✅ Loaded pretrained model from {model_path} (95.16% accuracy)")
+                    model_loaded = True
+                    break
+                except Exception as e:
+                    print(f"⚠️ Failed to load {model_path}: {str(e)}")
+                    continue
+        
+        if not model_loaded:
+            print("⚠️ No compatible model files found. Using untrained model.")
+            print("Available models:", [f for f in os.listdir("./best_models/") if f.endswith('.pth')])
         
         # Combine full model
         model = nn.Sequential(feature_extractor, classifier).to(device)

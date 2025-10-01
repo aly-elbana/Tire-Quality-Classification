@@ -79,14 +79,28 @@ def load_model():
         resnet_model = ResNetFeatureExtractor(base_resnet).to(device)
         fc_model = FC_Classifier().to(device)
         
-        # Load trained weights
-        model_path = "./best_models/best_model_acc0.9516_cpu.pth"
-        if os.path.exists(model_path):
-            fc_state_dict = torch.load(model_path, map_location=device)
-            fc_model.load_state_dict(fc_state_dict)
-            print(f"✅ Loaded model from {model_path}")
-        else:
-            print(f"⚠️ Model file not found: {model_path}")
+        # Load trained weights - try multiple model files
+        model_paths = [
+            "./best_models/best_model_acc0.9516_cpu.pth",
+            "./best_models/best_model_20250827_123421_acc0.9516.pth"
+        ]
+        
+        model_loaded = False
+        for model_path in model_paths:
+            if os.path.exists(model_path):
+                try:
+                    fc_state_dict = torch.load(model_path, map_location=device)
+                    fc_model.load_state_dict(fc_state_dict)
+                    print(f"✅ Loaded model from {model_path} (95.16% accuracy)")
+                    model_loaded = True
+                    break
+                except Exception as e:
+                    print(f"⚠️ Failed to load {model_path}: {str(e)}")
+                    continue
+        
+        if not model_loaded:
+            print("⚠️ No compatible model files found. Using untrained model.")
+            print("Available models:", [f for f in os.listdir("./best_models/") if f.endswith('.pth')])
         
         # Combine model
         model = nn.Sequential(resnet_model, fc_model).to(device)
