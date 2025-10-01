@@ -103,11 +103,11 @@ pip install -r requirements.txt
 
 ## Performance Results
 
-| Model          | Accuracy | Loss | Epochs |
-| -------------- | -------- | ---- | ------ | --------- |
-| ResNet50 + FC  | 95.16%   | 0.12 | 15     |
-| ResNet50 + CNN | 64.82%   | 0.15 | 12     | Bad Model |
-
+  Model           Accuracy  Loss  Epochs 
+ --------------  --------  ----  ------  ---------
+  ResNet50 + FC    95.16%    0.12    15     
+  ResNet50 + CNN   64.82%    0.15    12     Bad Model 
+ 
 ## Usage
 
 ### Training
