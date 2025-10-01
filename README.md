@@ -2,6 +2,9 @@
 
 AI-powered tire quality classification using deep learning
 
+## Dataset
+https://www.kaggle.com/datasets/warcoder/tyre-quality-classification
+
 ## Overview
 
 This project aims to classify tire quality (good/bad) using deep learning techniques. The model uses ResNet50 as a feature extractor with a custom classifier to achieve high accuracy in classification.
