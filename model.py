@@ -44,41 +44,22 @@ class FC_Classifier(nn.Module):
     """
     Custom fully connected classifier
     """
-    def __init__(self, input_size=2048, dropout_rate=0.3):
+    def __init__(self):
         super(FC_Classifier, self).__init__()
-        
-        self.classifier = nn.Sequential(
-            # First layer
-            nn.Linear(input_size, 1024),
-            nn.ReLU(),
-            nn.BatchNorm1d(1024),
-            
-            # Second layer
-            nn.Linear(1024, 1024),
-            nn.ReLU(),
-            nn.BatchNorm1d(1024),
-            
-            # Third layer
-            nn.Linear(1024, 512),
-            nn.ReLU(),
-            nn.BatchNorm1d(512),
-            nn.Dropout(dropout_rate),
-            
-            # Fourth layer
-            nn.Linear(512, 256),
-            nn.ReLU(),
-            nn.BatchNorm1d(256),
-            nn.Dropout(dropout_rate),
-            
-            # Fifth layer
-            nn.Linear(256, 128),
-            nn.ReLU(),
-            nn.BatchNorm1d(128),
-            nn.Dropout(dropout_rate),
-            
-            # Output layer
-            nn.Linear(128, 1)
-        )
+        self.fc1 = nn.Linear(2048, 1024)
+        self.relu1 = nn.ReLU()
+        self.fc2 = nn.Linear(1024, 1024)
+        self.relu2 = nn.ReLU()
+        self.fc3 = nn.Linear(1024, 512)
+        self.relu3 = nn.ReLU()
+        self.drop3 = nn.Dropout(0.3)
+        self.fc4 = nn.Linear(512, 256)
+        self.relu4 = nn.ReLU()
+        self.drop4 = nn.Dropout(0.3)
+        self.fc5 = nn.Linear(256, 128)
+        self.relu5 = nn.ReLU()
+        self.drop5 = nn.Dropout(0.3)
+        self.fc_out = nn.Linear(128, 1)
 
     def forward(self, x):
         """
@@ -90,7 +71,13 @@ class FC_Classifier(nn.Module):
         Returns:
             output: Classification result (batch_size, 1)
         """
-        return self.classifier(x)
+        x = self.relu1(self.fc1(x))
+        x = self.relu2(self.fc2(x))
+        x = self.drop3(self.relu3(self.fc3(x)))
+        x = self.drop4(self.relu4(self.fc4(x)))
+        x = self.drop5(self.relu5(self.fc5(x)))
+        x = self.fc_out(x)
+        return x
 
 
 def load_pretrained_model():
