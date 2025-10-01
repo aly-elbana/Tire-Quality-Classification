@@ -20,7 +20,7 @@ This project aims to classify tire quality (good/bad) using deep learning techni
 ## Project Structure
 
 ```
-├── app.py                 # Main Gradio application
+├── app.py                # Main Gradio application
 ├── main.py               # Main training script
 ├── cnn.main.py           # CNN training script
 ├── model.py              # Model definition
