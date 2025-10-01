@@ -33,7 +33,7 @@ This project aims to classify tire quality (good/bad) using deep learning techni
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/tire-classification.git
+git clone URL
 cd tire-classification
 ```
 
@@ -63,22 +63,26 @@ python app.py
 ### Common Issues
 
 **1. Model Loading Error:**
+
 - The app will automatically try to load the best available model
 - If no model is found, it will use an untrained model
 - Check that `best_models/` directory contains `.pth` files
 
 **2. CUDA/GPU Issues:**
+
 - The app automatically detects and uses available hardware
 - CPU fallback is always available
 - No GPU required for basic functionality
 
 **3. Missing Dependencies:**
+
 ```bash
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
 **4. Port Already in Use:**
+
 - Change port in `app.py`: `demo.launch(server_port=7861)`
 - Or kill existing process: `lsof -ti:7860 | xargs kill -9`
 
