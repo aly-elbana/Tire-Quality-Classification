@@ -1,0 +1,35 @@
+# Core ML Libraries
+torch>=2.0.0
+torchvision>=0.15.0
+torchaudio>=2.0.0
+
+# Image Processing
+Pillow>=9.5.0
+opencv-python>=4.8.0
+
+# Web Interface
+gradio>=3.40.0
+
+# Data Processing
+numpy>=1.24.0
+pandas>=2.0.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Utilities
+tqdm>=4.65.0
+scikit-learn>=1.3.0
+
+# Development Tools (Optional)
+jupyter>=1.0.0
+ipykernel>=6.20.0
+
+# Performance Monitoring (Optional)
+tensorboard>=2.13.0
+wandb>=0.15.0
+
+# Additional ML Tools (Optional)
+albumentations>=1.3.0
+timm>=0.9.0
