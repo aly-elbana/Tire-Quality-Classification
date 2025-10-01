@@ -129,8 +129,10 @@ dmypy.json
 .pyre/
 
 # Machine Learning specific
-# Model files
+# Model files (excluding best models)
 *.pth
+!best_models/best_model_20250827_123421_acc0.9516.pth
+!best_models/best_model_acc0.9516_cpu.pth
 *.pt
 *.pkl
 *.pickle
