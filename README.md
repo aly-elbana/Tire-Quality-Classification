@@ -103,8 +103,8 @@ pip install -r requirements.txt
 
 ## Performance Results
 
-  ResNet50 + FC    95.16%   
-  ResNet50 + CNN   64.82%    
+  ResNet50 + FC  =>     95.16%   
+  ResNet50 + CNN  =>    64.82%    
 ## Usage
 
 ### Training
